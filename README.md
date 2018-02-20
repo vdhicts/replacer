@@ -8,7 +8,7 @@ in the master branch.
 Add the following to your composer.json:
 
 ```json 
-"vdhicts/dicms-replacer": "dev-php56"
+"vdhicts/replacer": "dev-php56"
 ```
 
 ## Tests
