@@ -29,7 +29,7 @@ class Replacer
      * @param string $openDelimiter
      * @param string $closeDelimiter
      */
-    public function __construct(array $data = [], $openDelimiter = '[', $closeDelimiter = ']')
+    public function __construct(array $data = [], string $openDelimiter = '[', string $closeDelimiter = ']')
     {
         $this->setData($data);
         $this->setOpenDelimiter($openDelimiter);
@@ -92,7 +92,7 @@ class Replacer
 
     /**
      * Formats the token and adds the delimiters.
-     * @param $token
+     * @param string $token
      * @return string
      */
     private function formatToken(string $token): string
