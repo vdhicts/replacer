@@ -10,7 +10,7 @@ This package requires PHP 7.0+.
 
 Provide code examples and explanations of how to get the project:
 
-`composer require vdhicts/dicms-replacer`
+`composer require vdhicts/replacer`
 
 ## Usage
 
