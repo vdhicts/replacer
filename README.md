@@ -1,54 +1,14 @@
 # Replacer
 
-Dicms package to easily replace values in text for templating purposes, like email messages from the database.
-
-## Requirements
-
-This package requires PHP 7.0+.
+This is the PHP 5.6 compatible version of this package. For more information about the usage, please see the README.md 
+in the master branch.
 
 ## Installation
 
-Provide code examples and explanations of how to get the project:
+Add the following to your composer.json:
 
-`composer require vdhicts/dicms-replacer`
-
-## Usage
-
-```php
-$text = 'Hello [USERNAME]!';
-$data = [
-    'username' => 'World'
-];
-
-$replacer = new Replacer($data);
-$replacer->process($text);
-```
-
-The data can also be provided after initialising:
-
-```php
-$replacer->setData($data);
-```
-
-### Custom delimiters
-
-When initialising the `Replacer`, custom delimiters can be provided.
-
-```php
-$text = 'Hello %USERNAME#!';
-$data = [
-    'username' => 'World'
-];
-
-$replacer = new Replacer($data, '%', '#');
-$replacer->process($text);
-```
-
-The delimiters can also be provided after initialising:
-
-```php
-$replacer->setOpenDelimiter('%');
-$replacer->setCloseDelimiter('#');
+```json 
+"vdhicts/dicms-replacer": "dev-php56"
 ```
 
 ## Tests
