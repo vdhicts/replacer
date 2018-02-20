@@ -40,7 +40,7 @@ class Replacer
      * Returns the tokens and values which should be replaced.
      * @return array
      */
-    private function getData(): array
+    private function getData()
     {
         return $this->data;
     }
@@ -58,7 +58,7 @@ class Replacer
      * Holds the open delimiter for the tokens.
      * @return string
      */
-    private function getOpenDelimiter(): string
+    private function getOpenDelimiter()
     {
         return $this->openDelimiter;
     }
@@ -67,16 +67,18 @@ class Replacer
      * Stores the open delimiter for the tokens.
      * @param string $openDelimiter
      */
-    public function setOpenDelimiter(string $openDelimiter = '[')
+    public function setOpenDelimiter($openDelimiter = '[')
     {
-        $this->openDelimiter = $openDelimiter;
+        if (is_string($openDelimiter)) {
+            $this->openDelimiter = $openDelimiter;
+        }
     }
 
     /**
      * Returns the close delimiter for the tokens.
      * @return string
      */
-    private function getCloseDelimiter(): string
+    private function getCloseDelimiter()
     {
         return $this->closeDelimiter;
     }
@@ -85,17 +87,19 @@ class Replacer
      * Stores the close delimiter for the tokens.
      * @param string $closeDelimiter
      */
-    public function setCloseDelimiter(string $closeDelimiter = ']')
+    public function setCloseDelimiter($closeDelimiter = ']')
     {
-        $this->closeDelimiter = $closeDelimiter;
+        if (is_string($closeDelimiter)) {
+            $this->closeDelimiter = $closeDelimiter;
+        }
     }
 
     /**
      * Formats the token and adds the delimiters.
-     * @param $token
+     * @param string $token
      * @return string
      */
-    private function formatToken(string $token): string
+    private function formatToken($token)
     {
         return sprintf(
             '%s%s%s',
@@ -109,7 +113,7 @@ class Replacer
      * Returns the tokens.
      * @return array
      */
-    private function getTokens(): array
+    private function getTokens()
     {
         return array_map(
             function ($token) {
@@ -123,7 +127,7 @@ class Replacer
      * Returns the values of the tokens.
      * @return array
      */
-    private function getTokenValues(): array
+    private function getTokenValues()
     {
         return array_values($this->getData());
     }
@@ -131,10 +135,14 @@ class Replacer
     /**
      * Replaces the token with its values in the provided text.
      * @param string $text
-     * @return string
+     * @return string|null
      */
-    public function process(string $text = ''): string
+    public function process($text = '')
     {
+        if (! is_string($text)) {
+            return null;
+        }
+
         $tokens = $this->getTokens();
         if (count($tokens) === 0) {
             return $text;
