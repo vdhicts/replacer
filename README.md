@@ -4,7 +4,7 @@ Dicms package to easily replace values in text for templating purposes, like ema
 
 ## Requirements
 
-This package requires PHP 7.0+.
+This package requires PHP 7.0+ but there's a [`php56`](https://github.com/vdhicts/dicms-replacer/tree/php56) branch available for users which need PHP 5.6 compatibility. The `php56` branch won't receive any new features.
 
 ## Installation
 
