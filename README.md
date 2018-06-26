@@ -64,6 +64,11 @@ By default a coverage report will be generated in the build/coverage folder.
 Any contribution is welcome, but it should be fully tested, meet the PSR-2 standard and please create one pull request 
 per feature. In exchange you will be credited as contributor on this page.
 
+## Security
+
+If you discover any security related issues in this or other packages of Vdhicts, please email info@vdhicts.nl instead
+of using the issue tracker.
+
 ## License
 
 This package is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
