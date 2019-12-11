@@ -25,23 +25,23 @@ class ReplacerTest extends TestCase
 
     public function testWithValues()
     {
+        $replacer = new Replacer();
         $tokens = [
             'test1' => 1,
             'test2' => 2
         ];
-        $replacer = new Replacer($tokens);
 
-        $this->assertSame('1 en 2', $replacer->process('[TEST1] en [TEST2]'));
+        $this->assertSame('1 en 2', $replacer->process('[TEST1] en [TEST2]', $tokens));
     }
 
     public function testWithValuesWithCustomDelimiters()
     {
+        $replacer = new Replacer('%', '#');
         $tokens = [
             'test1' => 1,
             'test2' => 2
         ];
-        $replacer = new Replacer($tokens, '%', '#');
 
-        $this->assertSame('1 en 2', $replacer->process('%TEST1# en %TEST2#'));
+        $this->assertSame('1 en 2', $replacer->process('%TEST1# en %TEST2#', $tokens));
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "vdhicts/replacer",
-    "description": "Dicms package to easily replace values in text for templating purposes.",
+    "description": "Package to easily replace values in text for templating purposes.",
     "license": "MIT",
     "authors": [
         {

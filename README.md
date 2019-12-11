@@ -1,14 +1,14 @@
 # Replacer
 
-Dicms package to easily replace values in text for templating purposes, like email messages from the database.
+This package allows you to easily replace values in text for templating purposes, like email messages from the database.
 
 ## Requirements
 
-This package requires PHP 7.0+ but there's a [`php56`](https://github.com/vdhicts/dicms-replacer/tree/php56) branch available for users which need PHP 5.6 compatibility. The `php56` branch won't receive any new features.
+This package requires PHP 7.0+.
 
 ## Installation
 
-Provide code examples and explanations of how to get the project:
+Install the package with composer:
 
 `composer require vdhicts/replacer`
 
@@ -20,14 +20,8 @@ $data = [
     'username' => 'World'
 ];
 
-$replacer = new Replacer($data);
-$replacer->process($text);
-```
-
-The data can also be provided after initialising:
-
-```php
-$replacer->setData($data);
+$replacer = new Replacer();
+$replacer->process($text, $data);
 ```
 
 ### Custom delimiters
@@ -40,15 +34,16 @@ $data = [
     'username' => 'World'
 ];
 
-$replacer = new Replacer($data, '%', '#');
-$replacer->process($text);
+$replacer = new Replacer('%', '#');
+$replacer->process($text, $data);
 ```
 
 The delimiters can also be provided after initialising:
 
 ```php
-$replacer->setOpenDelimiter('%');
-$replacer->setCloseDelimiter('#');
+$replacer
+    ->setOpenDelimiter('%')
+    ->setCloseDelimiter('#');
 ```
 
 ## Tests

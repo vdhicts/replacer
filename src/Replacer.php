@@ -4,13 +4,6 @@ namespace Vdhicts\Dicms\Replacer;
 
 class Replacer
 {
-
-    /**
-     * Holds the tokens and values which should be replaced.
-     * @var array
-     */
-    private $data = [];
-
     /**
      * Holds the open delimiter for the tokens.
      * @var string
@@ -25,33 +18,13 @@ class Replacer
 
     /**
      * Replacer constructor.
-     * @param array $data
      * @param string $openDelimiter
      * @param string $closeDelimiter
      */
-    public function __construct(array $data = [], string $openDelimiter = '[', string $closeDelimiter = ']')
+    public function __construct(string $openDelimiter = '[', string $closeDelimiter = ']')
     {
-        $this->setData($data);
         $this->setOpenDelimiter($openDelimiter);
         $this->setCloseDelimiter($closeDelimiter);
-    }
-
-    /**
-     * Returns the tokens and values which should be replaced.
-     * @return array
-     */
-    private function getData(): array
-    {
-        return $this->data;
-    }
-
-    /**
-     * Stores the tokens and values which should be replaced.
-     * @param array $data
-     */
-    public function setData(array $data = [])
-    {
-        $this->data = $data;
     }
 
     /**
@@ -66,10 +39,13 @@ class Replacer
     /**
      * Stores the open delimiter for the tokens.
      * @param string $openDelimiter
+     * @return Replacer
      */
-    public function setOpenDelimiter(string $openDelimiter = '[')
+    public function setOpenDelimiter(string $openDelimiter = '['): self
     {
         $this->openDelimiter = $openDelimiter;
+
+        return $this;
     }
 
     /**
@@ -84,10 +60,13 @@ class Replacer
     /**
      * Stores the close delimiter for the tokens.
      * @param string $closeDelimiter
+     * @return Replacer
      */
-    public function setCloseDelimiter(string $closeDelimiter = ']')
+    public function setCloseDelimiter(string $closeDelimiter = ']'): self
     {
         $this->closeDelimiter = $closeDelimiter;
+
+        return $this;
     }
 
     /**
@@ -107,39 +86,47 @@ class Replacer
 
     /**
      * Returns the tokens.
+     * @param array $data
      * @return array
      */
-    private function getTokens(): array
+    private function getTokens(array $data = []): array
     {
         return array_map(
             function ($token) {
                 return $this->formatToken($token);
             },
-            array_keys($this->getData())
+            array_keys($data)
         );
     }
 
     /**
      * Returns the values of the tokens.
+     * @param array $data
      * @return array
      */
-    private function getTokenValues(): array
+    private function getTokenValues(array $data = []): array
     {
-        return array_values($this->getData());
+        return array_values($data);
     }
 
     /**
      * Replaces the token with its values in the provided text.
      * @param string $text
+     * @param array $data
      * @return string
      */
-    public function process(string $text = ''): string
+    public function process(string $text = '', array $data = []): string
     {
-        $tokens = $this->getTokens();
-        if (count($tokens) === 0) {
+        // Determine the tokens which should be replaced
+        $replaceTokens = $this->getTokens($data);
+        if (count($replaceTokens) === 0) {
             return $text;
         }
 
-        return str_replace($tokens, $this->getTokenValues(), $text);
+        // Determine the values with which the tokens should be replaced
+        $replaceValues = $this->getTokenValues($data);
+
+        // Replace the tokens with the values
+        return str_replace($replaceTokens, $replaceValues, $text);
     }
 }
