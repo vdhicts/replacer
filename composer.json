@@ -12,14 +12,24 @@
     ],
     "autoload": {
         "psr-4": {
-            "Vdhicts\\Dicms\\Replacer\\": "src/"
+            "Vdhicts\\Replacer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vdhicts\\Replacer\\Test\\": "tests/"
         }
     },
     "require": {
-        "php" : "~7.0"
+        "php" : "^7.4|^8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.1"
+        "phpunit/phpunit": "^9.0",
+        "vimeo/psalm": "^4.10"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "analyse": "vendor/bin/psalm"
     },
     "config": {
         "sort-packages": true
