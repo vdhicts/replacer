@@ -1,9 +1,9 @@
 <?php
 
-namespace Vdhicts\Dicms\Replacer\Tests\Unit;
+namespace Vdhicts\Replacer\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Vdhicts\Dicms\Replacer\Replacer;
+use Vdhicts\Replacer\Replacer;
 
 class ReplacerTest extends TestCase
 {
