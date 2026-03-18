@@ -5,8 +5,6 @@
     "authors": [
         {
             "name": "D. van der Heiden",
-            "email": "info@vdhicts.nl",
-            "homepage": "http://www.vdhicts.nl",
             "role": "Developer"
         }
     ],
@@ -21,15 +19,19 @@
         }
     },
     "require": {
-        "php" : "^7.4|^8.0"
+        "php" : "^8.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.0",
-        "vimeo/psalm": "^4.10"
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^10.0|^11.0|^12.0",
+        "symplify/easy-coding-standard": "^12.5"
     },
     "scripts": {
+        "code-style:check": "vendor/bin/ecs",
+        "code-style:fix": "vendor/bin/ecs --fix",
+        "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/phpunit",
-        "analyse": "vendor/bin/psalm"
+        "test:no-coverage": "vendor/bin/phpunit --no-coverage"
     },
     "config": {
         "sort-packages": true
