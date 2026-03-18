@@ -4,7 +4,7 @@ This package allows you to easily replace values in text for templating purposes
 
 ## Requirements
 
-This package requires PHP 7.4+.
+This package requires PHP 8.2+.
 
 ## Installation
 
@@ -67,8 +67,3 @@ instead of using the issue tracker.
 ## License
 
 This package is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
-
-## About vdhicts
-
-[Vdhicts](https://www.vdhicts.nl) is the name of my personal company. Vdhicts develops and implements IT solutions for
-businesses and educational institutions.
